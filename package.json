@@ -1,0 +1,29 @@
+{
+  "name": "kanata-bot",
+  "version": "1.0.4",
+  "description": "Modern WhatsApp Bot Framework with ES Modules",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "whatsapp-bot",
+    "bot",
+    "automation",
+    "baileys"
+  ],
+  "author": "Roynaldi",
+  "license": "MIT",
+  "dependencies": {
+    "@seaavey/baileys": "^6.5.5",
+    "axios": "^1.7.9",
+    "chalk": "^5.4.1",
+    "dotenv": "^16.3.1",
+    "fs-extra": "^11.1.1",
+    "node-cache": "^5.1.2",
+    "pino": "^8.15.0",
+    "wa-sticker-formatter": "^4.4.4"
+  }
+}
