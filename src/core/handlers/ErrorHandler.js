@@ -1,23 +1,13 @@
-import { Logger } from '../utils/Logger.js';
+import { Logger } from '../../utils/Logger.js';
 
 export class ErrorHandler {
-    static handle(error, context = null) {
-        if (error.name === 'CommandError') {
-            // Error yang diharapkan dari command
-            return context?.reply(error.message);
-        }
-
-        if (error.name === 'ValidationError') {
-            // Error validasi input
-            return context?.reply(`Validasi gagal: ${error.message}`);
-        }
-
-        // Log unexpected errors
-        Logger.error('Terjadi kesalahan:', error);
+    static async handle(error, context) {
+        console.error('Error dalam eksekusi command:', error);
         
-        // Notify user if context exists
-        if (context) {
-            return context.reply('Terjadi kesalahan internal. Silakan coba lagi nanti.');
+        try {
+            await context.reply(`Terjadi kesalahan: ${error.message}`);
+        } catch (replyError) {
+            console.error('Gagal mengirim pesan error:', replyError);
         }
     }
 }

@@ -7,12 +7,12 @@ export default class ExamplePlugin extends BasePlugin {
         this.version = '1.0.0';
     }
 
-    async initialize() {
+    async onLoad() {
         // Register commands
         this.client.commands.set('example', {
             name: 'example',
-            execute: async ({ message }) => {
-                await message.reply('Ini adalah contoh command dari plugin!');
+            execute: async (context) => {
+                await context.reply('Ini adalah contoh command dari plugin!');
             }
         });
 

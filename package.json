@@ -24,6 +24,8 @@
     "fs-extra": "^11.1.1",
     "node-cache": "^5.1.2",
     "pino": "^8.15.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
     "wa-sticker-formatter": "^4.4.4"
   }
 }

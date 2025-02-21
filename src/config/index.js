@@ -19,8 +19,8 @@ export const config = {
     
     // Paths Configuration
     mediaPath: path.join(process.cwd(), 'media'),
-    pluginsPath: path.join(process.cwd(), 'plugins'),
-    commandsPath: path.join(process.cwd(), 'src', 'app', 'commands'),
+    pluginsPath: path.join(process.cwd(), 'src', 'plugins'),
+    commandsPath: path.join(process.cwd(), 'src', 'commands'),
     
     // Command Configuration
     cooldown: parseInt(process.env.COMMAND_COOLDOWN) || 3,

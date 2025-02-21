@@ -1,5 +1,6 @@
 export class Router {
-    constructor() {
+    constructor(client) {
+        this.client = client;
         this.routes = new Map();
         this.middlewares = [];
     }
@@ -18,16 +19,18 @@ export class Router {
     }
 
     async handle(context) {
-        const { commandName } = context;
-        const command = this.routes.get(commandName);
+        const command = this.client.commands.get(context.commandName);
+        
+        if (!command) return;
 
-        if (!command) return null;
-
-        // Execute middlewares
-        for (const middleware of this.middlewares) {
-            await middleware(context, () => {});
+        // Jalankan middleware jika ada
+        if (command.middlewares) {
+            for (const middleware of command.middlewares) {
+                await middleware(context);
+            }
         }
 
-        return command.execute(context);
+        // Eksekusi command
+        await command.execute(context);
     }
 } 

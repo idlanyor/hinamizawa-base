@@ -4,17 +4,26 @@ export class BasePlugin {
         this.name = this.constructor.name;
         this.description = '';
         this.version = '1.0.0';
+        this.enabled = true;
     }
 
     async initialize() {
-        // Override this method to initialize plugin
+        if (this.enabled) {
+            await this.onLoad();
+        }
+    }
+
+    async onLoad() {
+        // Method ini harus diimplementasikan oleh plugin
+        throw new Error('Method onLoad() harus diimplementasikan');
     }
 
     async enable() {
-        // Override this method to enable plugin
+        this.enabled = true;
+        await this.onLoad();
     }
 
     async disable() {
-        // Override this method to disable plugin
+        this.enabled = false;
     }
 } 

@@ -5,15 +5,13 @@ export default class PingCommand extends BaseCommand {
         super({
             name: 'ping',
             alias: ['p'],
-            description: 'Mengecek latency bot',
-            category: 'misc'
+            description: 'Periksa koneksi bot',
+            category: 'misc',
+            cooldown: 5 // 5 detik
         });
     }
 
-    async execute({ client, message }) {
-        const start = Date.now();
-        await message.reply('Pong!');
-        const latency = Date.now() - start;
-        return message.reply(`Latency: ${latency}ms`);
+    async execute(context) {
+        await context.reply('Pong! 🏓');
     }
 } 
